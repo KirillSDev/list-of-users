@@ -19,7 +19,10 @@
       "jsx": "react-jsx",
       "incremental": true,
       "noImplicitThis": true,
-
+      "paths": {
+        "@/*": ["src/*"],
+        "@sass/*": ["src/assets/sass/*"]
+      }
     },
 
     "include": ["src/**/*.tsx", "src/**/*.ts",  "declaration.d.ts"],

@@ -25,6 +25,10 @@ module.exports = {
         }),
     ],
     resolve: {
+        alias: {
+            '@/': path.resolve(__dirname, 'src'),
+            'sass': path.resolve(__dirname, 'src/assets/sass')
+        },
         extensions: ['.tsx', '.ts', '.json', '.js'],
 
     },
