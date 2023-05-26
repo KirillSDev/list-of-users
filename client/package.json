@@ -21,6 +21,8 @@
     "@types/react-dom": "^18.2.4",
     "@types/webpack": "^5.28.1",
     "@types/webpack-dev-server": "^4.7.2",
+    "autoprefixer": "^10.4.14",
+    "bootstrap": "^5.2.3",
     "classnames": "^2.3.2",
     "css-loader": "^6.7.4",
     "html-webpack-plugin": "^5.5.1",
@@ -35,5 +37,4 @@
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0"
   }
-
 }
