@@ -1,0 +1,16 @@
+.container {
+    height: 100px;
+    padding: 10px;
+    align-items: center;
+}
+.buttons {
+    display: flex;
+    justify-content: end;
+}
+
+@media (max-width: 575px) {
+    .buttons {
+        display: flex;
+        justify-content: center;
+    }
+}
