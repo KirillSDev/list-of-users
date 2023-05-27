@@ -1,0 +1,15 @@
+.button {
+    cursor: pointer;
+    padding: 10px;
+    max-width: 150px;
+    width: 100%;
+    border: 0px;
+    text-align: center;
+    border-radius: 5px;
+    animation: opacity 0.2s;
+}
+
+.button:hover,
+.button:focus {
+    opacity: 0.7;
+}
