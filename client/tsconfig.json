@@ -20,8 +20,8 @@
       "incremental": true,
       "noImplicitThis": true,
       "paths": {
-        "@/*": ["src/*"],
-        "@sass/*": ["src/assets/sass/*"]
+        "@scss/*": ["src/assets/scss/*"],
+        "@components/*": ["src/components/*"]
       }
     },
 
