@@ -21,7 +21,13 @@
       "noImplicitThis": true,
       "paths": {
         "@scss/*": ["src/assets/scss/*"],
-        "@components/*": ["src/components/*"]
+        "@components/*": ["src/components/*"],
+        "@interfaces/*": ["src/interfaces/*"],
+        "@utils/*": ["src/utils/*"],
+        "@store/*": ["src/store/*"],
+        "@assets/*": ["src/assets/*"],
+        "@core/*": ["src/core/*"],
+        "@api/*": ["src/api/*"]
       }
     },
 
