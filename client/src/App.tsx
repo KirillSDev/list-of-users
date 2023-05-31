@@ -16,10 +16,18 @@ const App: FC = observer((): JSX.Element => {
     }, []);
     return (
         <Routes>
-            <Route path={'/'} element={<Home />} />
-            <Route path={'/login'} element={<Home />} />
-            <Route path={'/register'} element={<Home />} />
-            <Route path={'/users'} element={<UsersPage />} />
+            <Route path={'/'} element={<Home />}>
+                <Route path={'login'} element={<FormGroup type={'Login'} />} />
+                <Route path={'register'} element={<FormGroup type={'Register'} />} />
+            </Route>
+            <Route
+                path='/users'
+                element={
+                    <PrivateRoute isAuthenticated={authStore.isAuthenticated} redirectPath='/login'>
+                        <UsersPage></UsersPage>
+                    </PrivateRoute>
+                }
+            ></Route>
         </Routes>
     );
 });
