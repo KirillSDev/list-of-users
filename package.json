@@ -2,9 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "./server/dist/server.js",
-  "engines": {
-    "node": "18.12.1"
-  },
+
   "description": "",
   "scripts": {
     "dev": "nodemon ts-node server/server.ts",
