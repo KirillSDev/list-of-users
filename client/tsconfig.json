@@ -27,7 +27,7 @@
         "@store/*": ["src/store/*"],
         "@assets/*": ["src/assets/*"],
         "@core/*": ["src/core/*"],
-        "@api/*": ["src/api/*"],
+        "@api/*": ["src/utils/api/*"],
         "@services/*": ["src/services/*"],
       }
     },

@@ -1,6 +1,6 @@
-import { loginUser } from '@api/Auth/loginUser';
-import { registerUser } from '@api/Auth/registerUser';
-import { validateToken } from '@api/Auth/validateToken';
+import { loginUser } from '@api/Auth/loginUser.ts';
+import { registerUser } from '@api/Auth/registerUser.ts';
+import { validateToken } from '@api/Auth/validateToken.ts';
 import { IFormData } from '@interfaces/FormData.interface';
 import { authStore } from '@store/AuthStore';
 
