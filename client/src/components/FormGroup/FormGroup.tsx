@@ -4,8 +4,11 @@ import cn from 'classnames';
 import { Button } from '@components/Button/Button';
 import styles from './FromGroup.module.scss';
 import { IFormGroup } from './FormGroup.props';
-import { loginUser } from '@api/auth/loginUser';
 import { IFormData } from '@interfaces/FormData.interface';
+import { validateForm } from '@utils/validators/validateForm';
+import { authStore } from '@store/AuthStore';
+import { AuthService } from '../../services/AuthService';
+
 export const FormGroup: FC<IFormGroup> = ({ type, ...props }): JSX.Element => {
     const [formData, setFormData] = useState<IFormData>({
         name: '',
@@ -13,26 +16,48 @@ export const FormGroup: FC<IFormGroup> = ({ type, ...props }): JSX.Element => {
         password: '',
     });
 
+    const onChangeForm = (e: React.ChangeEvent<any>, name: string) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: e.target.value,
+        }));
+    };
+
+    const submitForm = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (validateForm(formData, type)) {
+            authStore.setMessage('Fields must not be empty!');
+        } else {
+            ActionType.LOGIN == type ? AuthService.loginUser(formData) : AuthService.registerUser(formData);
+            setFormData({
+                name: '',
+                email: '',
+                password: '',
+            });
+        }
+    };
+    enum ActionType {
+        LOGIN = 'Login',
+        REGISTER = 'Register',
+    }
+
     return (
         <Form
             onSubmit={(e) => {
-                e.preventDefault();
-                loginUser(formData);
+                submitForm(e);
             }}
             {...props}
             className={cn('bg-warning', styles.container)}
         >
             <div className={styles['container__title']}>{type}</div>
-            {type == 'Register' && (
+            {ActionType.REGISTER == type && (
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                         onChange={(e) => {
-                            setFormData((prevFormData) => ({
-                                ...prevFormData,
-                                ['name']: e.target.value,
-                            }));
+                            onChangeForm(e, 'name');
                         }}
+                        value={formData.name}
                         type='text'
                         placeholder='Enter name'
                     ></Form.Control>
@@ -42,11 +67,9 @@ export const FormGroup: FC<IFormGroup> = ({ type, ...props }): JSX.Element => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                     onChange={(e) => {
-                        setFormData((prevFormData) => ({
-                            ...prevFormData,
-                            ['email']: e.target.value,
-                        }));
+                        onChangeForm(e, 'email');
                     }}
+                    value={formData.email}
                     type='email'
                     placeholder='Enter email'
                 ></Form.Control>
@@ -55,11 +78,9 @@ export const FormGroup: FC<IFormGroup> = ({ type, ...props }): JSX.Element => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                     onChange={(e) => {
-                        setFormData((prevFormData) => ({
-                            ...prevFormData,
-                            ['password']: e.target.value,
-                        }));
+                        onChangeForm(e, 'password');
                     }}
+                    value={formData.password}
                     type='password'
                     placeholder='Enter password'
                 ></Form.Control>
