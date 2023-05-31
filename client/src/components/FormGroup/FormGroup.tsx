@@ -7,7 +7,7 @@ import { IFormGroup } from './FormGroup.props';
 import { IFormData } from '@interfaces/FormData.interface';
 import { validateForm } from '@utils/validators/validateForm';
 import { authStore } from '@store/AuthStore';
-import { AuthService } from '../../services/AuthService';
+import { AuthService } from '@services/AuthService';
 
 export const FormGroup: FC<IFormGroup> = ({ type, ...props }): JSX.Element => {
     const [formData, setFormData] = useState<IFormData>({

@@ -6,7 +6,7 @@ import { FormGroup } from '@components/FormGroup/FormGroup';
 import { PrivateRoute } from '@components/PrivateRoute/PrivateRoute';
 import { observer } from 'mobx-react';
 import { authStore } from '@store/AuthStore';
-import { AuthService } from './services/AuthService';
+import { AuthService } from '@services/AuthService';
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
