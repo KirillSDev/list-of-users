@@ -5,7 +5,7 @@ import { Button } from '@components/Button/Button';
 import { Stack } from 'react-bootstrap';
 import { IUser } from '@interfaces/User.interface';
 import { observer } from 'mobx-react';
-import users from '@store/UsersStore';
+import users from '@store/usersStore';
 import DeleteIcon from '@assets/icons/delete.svg';
 import UnblockIcon from '@assets/icons/unblock.svg';
 
