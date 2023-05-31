@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "./server/dist/server.js",
+  "main": "index.js",
 
   "description": "",
   "scripts": {
