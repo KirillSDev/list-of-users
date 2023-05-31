@@ -1,0 +1,45 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import { sequelize } from './database';
+import { AuthController } from './controllers/AuthController';
+import { UserController } from './controllers/UserController';
+import dotenv from 'dotenv';
+import { tokenVerification } from './middleware/tokenVerification';
+
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+const Auth = new AuthController();
+const User = new UserController();
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(tokenVerification);
+
+app.get('/', tokenVerification, (req, res) => {
+    if (req.user) {
+        const user = req.user;
+        res.json({ user });
+    }
+});
+app.post('/login', Auth.login);
+app.post('/register', Auth.register);
+app.get('/users', User.showAllUsers);
+app.delete('/users', User.deleteUser);
+app.patch('/users/block', User.blockUser);
+app.patch('/users/unblock', User.unblockUser);
+
+sequelize
+    .sync()
+    .then(() => {
+        console.log('Connected to the database');
+        app.listen(port, () => {
+            console.log(`Server is running on port ${port}`);
+        });
+    })
+    .catch((error: Error) => {
+        console.error('Failed to connect to the database:', error);
+    });

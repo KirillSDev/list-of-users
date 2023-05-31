@@ -6,6 +6,6 @@ export interface IUserTable {
     users: IUser[];
     onCheckboxClick: (event: ChangeEvent<HTMLInputElement>, user: IUser) => void;
     clearSelectedUsers: () => void;
-    selectedUsers: string[];
+    selectedUsers: number[];
     selectAll: (event: ChangeEvent<HTMLInputElement>) => void;
 }

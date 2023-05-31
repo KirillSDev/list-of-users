@@ -5,6 +5,7 @@ import Stack from 'react-bootstrap/Stack';
 import styles from './Header.module.scss';
 import { Button } from '@components/Button/Button';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { authStore } from '@store/AuthStore';
 
 export const Header: FC = (): JSX.Element => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const Header: FC = (): JSX.Element => {
         <Container fluid>
             <div className={cn('row bg-black text-white', styles.container)}>
                 <h6 className='col-sm-2 text-center'>Test Project</h6>
-                {isButtonsVisible && (
+                {isButtonsVisible ? (
                     <Stack direction={'horizontal'} className={cn('col-sm-10', styles.buttons)} gap={1}>
                         <Button
                             onClick={() => {
@@ -37,6 +38,16 @@ export const Header: FC = (): JSX.Element => {
                             }}
                         >
                             Register
+                        </Button>
+                    </Stack>
+                ) : (
+                    <Stack direction={'horizontal'} className={cn('col-sm-10', styles.buttons)} gap={1}>
+                        <Button
+                            onClick={() => {
+                                authStore.logout();
+                            }}
+                        >
+                            Log out
                         </Button>
                     </Stack>
                 )}

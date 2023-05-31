@@ -43,7 +43,7 @@ export const UserTable: FC<IUserTable> = observer(
                                 <td>{idx + 1}</td>
                                 <td className='text-break'>{user.email}</td>
                                 <td>{user.name}</td>
-                                <td>{formatDate(user.dateRegistration)}</td>
+                                <td>{formatDate(user.registrationDate)}</td>
                                 <td>{formatDate(user.lastLoginDate)}</td>
                                 <td>{user.status}</td>
                             </tr>
