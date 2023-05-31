@@ -1,11 +1,11 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, useEffect } from 'react';
 import { Layout } from '../layout/Layout';
 import { UserTable } from '@components/UserTable/UserTable';
 import { Button } from '@components/Button/Button';
 import { Stack } from 'react-bootstrap';
 import { IUser } from '@interfaces/User.interface';
 import { observer } from 'mobx-react';
-import users from '@store/usersStore';
+import users from '@store/UsersStore';
 import DeleteIcon from '@assets/icons/delete.svg';
 import UnblockIcon from '@assets/icons/unblock.svg';
 
@@ -29,6 +29,11 @@ export const UsersPage: FC = observer((): JSX.Element => {
             users.clearSelectedUsers();
         }
     };
+
+    useEffect(() => {
+        users.getAllUsers();
+    }, []);
+
     return (
         <Layout>
             <Stack direction={'horizontal'} className='my-3 d-flex justify-content-center gap-2'>
