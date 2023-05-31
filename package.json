@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon ts-node server/server/ts",
     "build": "tsc",
-    "client": "npm run start --prefix client"
+    "client": "npm run build --prefix client"
   },
   "author": "KirillSDev",
   "license": "ISC",
