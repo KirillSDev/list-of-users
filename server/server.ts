@@ -5,7 +5,8 @@ import { sequelize } from './database';
 import { AuthController } from './controllers/AuthController';
 import { UserController } from './controllers/UserController';
 import { tokenVerification } from './middleware/tokenVerification';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
