@@ -4,10 +4,7 @@ import cors from 'cors';
 import { sequelize } from './database';
 import { AuthController } from './controllers/AuthController';
 import { UserController } from './controllers/UserController';
-import dotenv from 'dotenv';
 import { tokenVerification } from './middleware/tokenVerification';
-
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
