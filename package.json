@@ -1,11 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/dist/server.js",
   "description": "",
   "scripts": {
     "start": "nodemon ts-node server/server/ts",
-    "build": "tsc && nodemon ts-node server/server/ts",
+    "build": "tsc",
     "client": "npm run start --prefix client"
   },
   "author": "KirillSDev",
