@@ -7,7 +7,7 @@
   "description": "",
   "scripts": {
     "dev": "nodemon ts-node server/server.ts",
-    "start": "node server/dist/server.ts",
+    "start": "node server/dist/server.js",
     "build": "tsc",
     "client": "npm run start --prefix client"
   },
