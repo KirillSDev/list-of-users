@@ -1,10 +1,8 @@
-import axios from '@core/axios';
+import $API from '@core/axios';
 import { IFormData } from '@interfaces/FormData.interface';
+import { authStore } from '@store/AuthStore';
 
 export const loginUser = async (formData: IFormData) => {
-    try {
-        const response = await axios.post('/login', formData);
-    } catch (error) {
-        throw new Error('User login error');
-    }
+    const response = await $API.post('/login', formData);
+    return response.data;
 };
