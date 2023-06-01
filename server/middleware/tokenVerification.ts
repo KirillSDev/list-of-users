@@ -18,9 +18,8 @@ export const tokenVerification = async (req: express.Request, res: express.Respo
     }
     try {
         const token: string | null = 'token' in req.headers ? (req.headers.token as string) : null;
-
         if (!token) {
-            res.status(400).send('You do not have access');
+            return res.status(400).end();
         } else {
             const decodedData = jwt.verify(token, process.env.SECRET_KEY!);
 
@@ -31,12 +30,12 @@ export const tokenVerification = async (req: express.Request, res: express.Respo
                 },
             });
             if (user && user.status === 'block') {
-                res.status(401).send('Your account is blocked');
+                return res.status(401).send('Your account is blocked');
             }
         }
 
         next();
     } catch (error) {
-        res.status(400).send('You do not have access');
+        return res.status(400).end();
     }
 };

@@ -8,8 +8,11 @@ import { observer } from 'mobx-react';
 import users from '@store/usersStore';
 import DeleteIcon from '@assets/icons/delete.svg';
 import UnblockIcon from '@assets/icons/unblock.svg';
+import { authStore } from '@store/AuthStore';
+import { useNavigate } from 'react-router-dom';
 
 export const UsersPage: FC = observer((): JSX.Element => {
+    const navigate = useNavigate();
     const handleCheckboxClick = (e: ChangeEvent<HTMLInputElement>, user: IUser) => {
         if (e.target.checked) {
             users.selectUser(user.id);
@@ -35,39 +38,41 @@ export const UsersPage: FC = observer((): JSX.Element => {
     }, []);
 
     return (
-        <Layout>
-            <Stack direction={'horizontal'} className='my-3 d-flex justify-content-center gap-2'>
-                <Button
-                    onClick={() => {
-                        users.blockUsers();
-                    }}
-                >
-                    Block
-                </Button>
-                <Button
-                    image={UnblockIcon}
-                    onClick={() => {
-                        users.unblockUsers();
-                    }}
-                >
-                    Unblock
-                </Button>
-                <Button
-                    image={DeleteIcon}
-                    onClick={() => {
-                        users.deleteUsers();
-                    }}
-                >
-                    Delete
-                </Button>
-            </Stack>
-            <UserTable
-                selectAll={selectAll}
-                selectedUsers={users.selectedUsers}
-                clearSelectedUsers={users.clearSelectedUsers}
-                onCheckboxClick={handleCheckboxClick}
-                users={users.users}
-            ></UserTable>
-        </Layout>
+        <>
+            <Layout>
+                <Stack direction={'horizontal'} className='my-3 d-flex justify-content-center gap-2'>
+                    <Button
+                        onClick={() => {
+                            users.blockUsers();
+                        }}
+                    >
+                        Block
+                    </Button>
+                    <Button
+                        image={UnblockIcon}
+                        onClick={() => {
+                            users.unblockUsers();
+                        }}
+                    >
+                        Unblock
+                    </Button>
+                    <Button
+                        image={DeleteIcon}
+                        onClick={() => {
+                            users.deleteUsers();
+                        }}
+                    >
+                        Delete
+                    </Button>
+                </Stack>
+                <UserTable
+                    selectAll={selectAll}
+                    selectedUsers={users.selectedUsers}
+                    clearSelectedUsers={users.clearSelectedUsers}
+                    onCheckboxClick={handleCheckboxClick}
+                    users={users.users}
+                ></UserTable>
+            </Layout>
+        </>
     );
 });

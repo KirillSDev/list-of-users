@@ -5,6 +5,7 @@ export class UserController {
         const users = await User.findAll({
             attributes: ['id', 'name', 'email', 'status', 'registrationDate', 'lastLoginDate'],
         });
+
         res.status(200).json(users);
     };
     blockUser = async (req: express.Request, res: express.Response) => {

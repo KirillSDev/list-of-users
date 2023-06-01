@@ -22,7 +22,7 @@ export class AuthController {
                 lastLoginDate: null,
             });
             user.then(() => {
-                res.status(201).json({ error: 'Success. User registered successfully. Now you can login!' });
+                res.status(201).json('Success. User registered successfully. Now you can login!');
             }).catch((error) => {
                 res.status(400).json({ error: `Such a user exists` });
             });

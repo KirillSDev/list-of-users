@@ -25,12 +25,12 @@ export class AuthService {
     }
     static async validateToken() {
         try {
-            const response = await validateToken();
-            authStore.setStatusAuthenticated(true);
-        } catch (error: any) {
-            if (error.response && error.response.status === 401) {
-                authStore.setStatusAuthenticated(false);
+            if (localStorage.length) {
+                const response = await validateToken();
+                authStore.setStatusAuthenticated(true);
             }
+        } catch (error: any) {
+            authStore.setStatusAuthenticated(false);
         }
     }
 }

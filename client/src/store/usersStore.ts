@@ -18,9 +18,10 @@ class UsersStore {
         if (!response) {
             this.status = false;
         } else {
+            const users = await response;
+            console.log(users, 2);
+            this.users = await [...users];
             this.status = true;
-            const users = response;
-            this.users = [...users];
         }
     }
     clearSelectedUsers() {

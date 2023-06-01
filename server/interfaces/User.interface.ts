@@ -4,6 +4,6 @@ export interface IUser {
     email: string;
     password: string;
     status: 'active' | 'block';
-    registrationDate: Date;
-    lastLoginDate: Date | null;
+    registrationDate: string | Date;
+    lastLoginDate: string | Date | null;
 }
