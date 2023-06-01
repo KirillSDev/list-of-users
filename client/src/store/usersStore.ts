@@ -5,6 +5,7 @@ import { unblockUser } from '@api/User/unblockUser';
 import { deleteUser } from '@api/User/deleteUser';
 import { getAllUsers } from '@api/User/getAllUsers';
 import { authStore } from './AuthStore';
+import { error } from 'console';
 class UsersStore {
     selectedUsers: number[] = [];
     selectAll: boolean = false;
@@ -34,14 +35,12 @@ class UsersStore {
         this.selectedUsers = this.selectedUsers.filter((userId) => id !== userId);
     }
 
-    async blockUsers() {
-        try {
-            const response = await blockUser(this.selectedUsers);
-        } catch (error: any) {
+    blockUsers() {
+        blockUser(this.selectedUsers).catch((error) => {
             if (error.response && error.response.status === 401) {
                 authStore.logout();
             }
-        }
+        });
         this.selectedUsers.forEach((userId) => {
             this.users.forEach((user) => {
                 if (user.id === userId) {
@@ -60,14 +59,13 @@ class UsersStore {
             }
         });
     }
-    async deleteUsers() {
-        try {
-            const response = await deleteUser(this.selectedUsers);
-        } catch (error: any) {
+    deleteUsers() {
+        deleteUser(this.selectedUsers).catch((error) => {
             if (error.response && error.response.status === 401) {
                 authStore.logout();
             }
-        }
+        });
+
         this.users = this.users.filter((user) => !this.selectedUsers.includes(user.id));
         this.selectedUsers = [];
     }

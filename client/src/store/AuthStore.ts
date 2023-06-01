@@ -23,8 +23,8 @@ class AuthStore {
         this.isAuthenticated = true;
     }
     logout() {
-        this.isAuthenticated = false;
         localStorage.removeItem('token');
+        this.isAuthenticated = false;
     }
     clearMessage() {
         this.message = '';
