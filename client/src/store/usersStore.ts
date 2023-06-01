@@ -19,7 +19,6 @@ class UsersStore {
             this.status = false;
         } else {
             const users = await response;
-            console.log(users, 2);
             this.users = await [...users];
             this.status = true;
         }
@@ -42,15 +41,14 @@ class UsersStore {
             if (error.response && error.response.status === 401) {
                 authStore.setStatusAuthenticated(false);
             }
-        } finally {
-            this.selectedUsers = this.selectedUsers.map((userId) => {
-                const foundUser = this.users.find((user) => user.id === userId);
-                if (foundUser) {
-                    foundUser.status = 'block';
-                }
-                return userId;
-            });
         }
+        this.selectedUsers = this.selectedUsers.map((userId) => {
+            const foundUser = this.users.find((user) => user.id === userId);
+            if (foundUser) {
+                foundUser.status = 'block';
+            }
+            return userId;
+        });
     }
     unblockUsers() {
         unblockUser(this.selectedUsers);
@@ -69,10 +67,9 @@ class UsersStore {
             if (error.response && error.response.status === 401) {
                 authStore.setStatusAuthenticated(false);
             }
-        } finally {
-            this.users = this.users.filter((user) => !this.selectedUsers.includes(user.id));
-            this.selectedUsers = [];
         }
+        this.users = this.users.filter((user) => !this.selectedUsers.includes(user.id));
+        this.selectedUsers = [];
     }
 }
 

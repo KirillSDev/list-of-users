@@ -2,9 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "description": "",
+  "description": "dist/server.js",
   "scripts": {
-    "start": "nodemon ts-node server.ts",
+    "dev": "nodemon ts-node server.ts",
+    "start": "node dist/server.js",
     "build": "tsc",
     "client": "npm run build --prefix client"
   },
