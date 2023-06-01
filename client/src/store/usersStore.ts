@@ -42,12 +42,12 @@ class UsersStore {
                 authStore.logout();
             }
         }
-        this.selectedUsers = this.selectedUsers.map((userId) => {
-            const foundUser = this.users.find((user) => user.id === userId);
-            if (foundUser) {
-                foundUser.status = 'block';
-            }
-            return userId;
+        this.selectedUsers.forEach((userId) => {
+            this.users.forEach((user) => {
+                if (user.id === userId) {
+                    user.status = 'block';
+                }
+            });
         });
     }
     unblockUsers() {
