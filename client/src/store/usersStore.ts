@@ -39,7 +39,7 @@ class UsersStore {
             const response = await blockUser(this.selectedUsers);
         } catch (error: any) {
             if (error.response && error.response.status === 401) {
-                authStore.setStatusAuthenticated(false);
+                authStore.logout();
             }
         }
         this.selectedUsers = this.selectedUsers.map((userId) => {
@@ -65,7 +65,7 @@ class UsersStore {
             const response = await deleteUser(this.selectedUsers);
         } catch (error: any) {
             if (error.response && error.response.status === 401) {
-                authStore.setStatusAuthenticated(false);
+                authStore.logout();
             }
         }
         this.users = this.users.filter((user) => !this.selectedUsers.includes(user.id));
