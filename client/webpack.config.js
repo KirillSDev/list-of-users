@@ -1,8 +1,8 @@
 const path = require('path');
-const { webpack } = require('webpack')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const dotenv = require('dotenv');
 module.exports = {
     mode: "development",
     entry: path.resolve(__dirname, './src/index.tsx'),
@@ -23,6 +23,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'style.css',
         }),
+        new webpack.DefinePlugin({
+            'process.env.API_URL': JSON.stringify(process.env.API_URL)
+        })
     ],
     resolve: {
         alias: {
