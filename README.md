@@ -58,7 +58,7 @@ If you do not have these credentials, please contact the project owner to obtain
 <li> Start the development server: </li>
 
 ```bash
-   yarn start 
    yarn client
+   yarn dev
 ```
 
