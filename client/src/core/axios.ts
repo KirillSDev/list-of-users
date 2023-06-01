@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const $API = axios.create({
-    baseURL: 'https://list-of-users.onrender.com:3301',
+    baseURL: 'http://localhost:3000',
 });
 
 $API.interceptors.request.use(

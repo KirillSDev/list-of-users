@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(tokenVerification);
 
 app.get('/', tokenVerification, (req, res) => {
-    if (req.user) {
+    if (req.user?.id) {
         const user = req.user;
         res.json({ user });
     }
