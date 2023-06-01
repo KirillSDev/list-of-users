@@ -8,7 +8,6 @@ import { observer } from 'mobx-react';
 import users from '@store/usersStore';
 import DeleteIcon from '@assets/icons/delete.svg';
 import UnblockIcon from '@assets/icons/unblock.svg';
-import { authStore } from '@store/AuthStore';
 import { useNavigate } from 'react-router-dom';
 
 export const UsersPage: FC = observer((): JSX.Element => {

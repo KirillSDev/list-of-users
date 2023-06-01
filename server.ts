@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 const Auth = new AuthController();
 const User = new UserController();
 
-const clientDistPath = path.resolve(__dirname, 'client/dist');
+const clientDistPath = path.resolve(__dirname, '../client/dist');
 
 app.use(express.static(clientDistPath));
 app.use(cors());
