@@ -13,7 +13,12 @@ const port = process.env.PORT || 3000;
 const Auth = new AuthController();
 const User = new UserController();
 
-app.use(cors());
+app.use(
+    cors({
+        origin: 'https://list-of-users-4zh4.vercel.app/',
+        methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    })
+);
 app.use(bodyParser.json());
 app.use(tokenVerification);
 
